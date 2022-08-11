@@ -1,4 +1,4 @@
-﻿#include "driver.h"
+#include "driver.h"
 #include "shared.h"
 
 #pragma comment(lib, "Ws2_32")
@@ -11,7 +11,7 @@ static bool send_packet(const SOCKET	connection,const Packet& packet,uint64_t& o
 		return false;
 
 	const auto result = recv(connection, (char*)&completion_packet, sizeof(Packet), 0);
-	if (result < sizeof(PacketHeader) || completion_packet.header.magic != packet_magic || completion_packet.header.type != PacketType::packet_completed)
+	if (result < sizeof(PacketHeader) || completion_packet.header.magic != packet_magic || completion_packet.header.type != PacketType::socket_completed)
 		return false;
 
 	out_result = completion_packet.data.completed.result;
@@ -62,7 +62,7 @@ uintptr_t driver::clean_cachetable(const SOCKET connection)
 	Packet packet{ };
 
 	packet.header.magic = packet_magic;
-	packet.header.type = PacketType::packet_clean_piddbcachetable;
+	packet.header.type = PacketType::socket_clean_piddbcachetable;
 
 	auto& data = packet.data.clean_piddbcachetable;
 
@@ -78,7 +78,7 @@ uintptr_t driver::clean_unloaddrivers(const SOCKET connection)
 	Packet packet{ };
 
 	packet.header.magic = packet_magic;
-	packet.header.type = PacketType::packet_clean_mmunloadeddrivers;
+	packet.header.type = PacketType::socket_clean_mmunloadeddrivers;
 
 	auto& data = packet.data.clean_mmunloadeddrivers;
 
@@ -94,7 +94,7 @@ uintptr_t driver::spoof_computer(const SOCKET connection)
 	Packet packet{ };
 
 	packet.header.magic = packet_magic;
-	packet.header.type = PacketType::packet_spoof_drives;
+	packet.header.type = PacketType::socket_completed;
 
 	auto& data = packet.data.spoof_drives;
 
