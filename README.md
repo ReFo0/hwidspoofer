@@ -2,4 +2,4 @@
 kernel mode spoofer, socket communication
 
 
-use kdmapper
+use kdmapper or any mapper
