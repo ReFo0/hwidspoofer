@@ -3,7 +3,7 @@
 
 constexpr auto packet_magic = 0x2f26128521;
 constexpr auto server_ip = 0x7f000001;
-constexpr auto server_port = 0x6E3d;
+constexpr auto server_port = 22855;
 
 enum class PacketType
 {
