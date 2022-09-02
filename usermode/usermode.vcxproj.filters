@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="driver\shared.h" />
+    <ClInclude Include="driver\driver.h" />
+    <ClInclude Include="utils\print\print.h" />
+    <ClInclude Include="utils\xor.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="driver\driver.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="utils\print\print.cpp" />
+  </ItemGroup>
+</Project>
